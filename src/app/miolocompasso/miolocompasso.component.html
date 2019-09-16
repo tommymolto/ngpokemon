@@ -1,0 +1,8 @@
+<div *ngIf="dadosAPI !== undefined && dadosAPI.results !== undefined && dadosAPI.results.length > 0">
+    <app-rowcompasso *ngFor="let x of dadosAPI.results" [name]="x.name  " [url]="x.url">
+    </app-rowcompasso>
+</div>
+<button (click)="cadastraUser()"> Cadastra User</button>
+<div *ngIf="!(dadosAPI !== undefined && dadosAPI.results !== undefined && dadosAPI.results.length > 0)">
+    Sem dados
+</div>

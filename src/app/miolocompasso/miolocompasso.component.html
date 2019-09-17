@@ -1,6 +1,12 @@
 <div *ngIf="dadosAPI !== undefined && dadosAPI.results !== undefined && dadosAPI.results.length > 0">
-    <app-rowcompasso *ngFor="let x of dadosAPI.results" [name]="x.name  " [url]="x.url">
-    </app-rowcompasso>
+    <ul>
+      <app-rowcompasso *ngFor="let x of dadosAPI.results" [name]="x.name  " [url]="x.url">
+      </app-rowcompasso>
+    </ul>
+  <p>
+    <button *ngIf="dadosAPI.previous !== null && dadosAPI.previous !== '' " (click)="navegaEntrePaginas(dadosAPI.previous)">Anterior</button>
+    <button *ngIf="dadosAPI.next !== null && dadosAPI.next !== '' " (click)="navegaEntrePaginas(dadosAPI.next)">Proximo</button>
+  </p>
 </div>
 <button (click)="cadastraUser()"> Cadastra User</button>
 <div *ngIf="!(dadosAPI !== undefined && dadosAPI.results !== undefined && dadosAPI.results.length > 0)">

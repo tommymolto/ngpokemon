@@ -13,6 +13,7 @@ import { Erro404Component } from './erro404/erro404.component';
 import { LinhacompassoComponent } from './linhacompasso/linhacompasso.component';
 import {ApiService} from './api.service';
 import {HttpClientModule} from '@angular/common/http';
+import { FichapokemonComponent } from './fichapokemon/fichapokemon.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HttpClientModule} from '@angular/common/http';
     ContatoComponent,
     SobreComponent,
     Erro404Component,
-    LinhacompassoComponent
+    LinhacompassoComponent,
+    FichapokemonComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from '../api.service';
 import {Users} from '../shared/models/users';
+import {Pokemons} from '../shared/models/pokemons';
 
 @Component({
   selector: 'app-miolocompasso',
@@ -11,17 +12,25 @@ import {Users} from '../shared/models/users';
 export class MiolocompassoComponent implements OnInit, OnDestroy {
 
 
-  dadosAPI: Users;
+  dadosAPI: Pokemons;
   error = '';
   constructor( private api: ApiService) {
 
   }
 
   ngOnInit() {
-    this.api.getUsuarios().subscribe(  (retorno : Users)  => {
+    this.api.getPokemons().subscribe(  (retorno : Pokemons)  => {
       this.dadosAPI = retorno;
     }, (error) => {
-      this.dadosAPI = {};
+      this.dadosAPI = null;
+      this.error = 'Erro na API';
+    });
+  }
+  navegaEntrePaginas(url): void{
+    this.api.getNovosPokemons(url).subscribe(  (retorno : Pokemons)  => {
+      this.dadosAPI = retorno;
+    }, (error) => {
+      this.dadosAPI = null;
       this.error = 'Erro na API';
     });
   }
